@@ -56,7 +56,7 @@ class TLError(params: DevNullParams, buffer: Boolean = true, beatBytes: Int = 4)
 
       // ReleaseAck is not allowed to report failure
       dc.bits.opcode  := ReleaseAck
-      dc.bits.param   := VecInit(VecInit(VecInit(toB), toN), toN)(c.bits.param)
+      dc.bits.param   := VecInit(Seq(toB, toN, toN))(c.bits.param)
       dc.bits.size    := c.bits.size
       dc.bits.source  := c.bits.source
       dc.bits.sink    := 0.U
